@@ -174,17 +174,15 @@ group by nums, numcd;
 
 -- Question 21
 -- On considère aussi les résultats aux examens ici, sans plus de précision dans l'énoncé
-select numcd, nums, fautes
-from seance
+select datea, heurea, nbfautes
+from
 (
-    select datea, heurea, avg(nbfautes) fautes
-    from
-    (
-        select datea, heurea, nbfautes
-        from assiste
-        union
-        select datee, heuree, nbfautes
-        from inscrit
-    )
-    group by datea, heurea
-);
+    select datea, heurea, nbfautes
+    from 
+    assiste
+    union
+    select datee, heuree, nbfautes
+    from inscrit
+)
+full join seance
+on datea = dates and heurea = heures;
