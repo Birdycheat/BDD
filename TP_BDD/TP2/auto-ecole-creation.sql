@@ -7,7 +7,6 @@ drop table seance;
 drop table serie;
 drop table cd;
 drop table eleve;
-drop table blyat;
 
 create table eleve(
        nume integer primary key, 
